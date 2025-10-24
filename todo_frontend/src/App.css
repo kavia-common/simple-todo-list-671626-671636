@@ -1,104 +1,249 @@
-/* CSS Variables for Theme Management */
-:root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
+/* Ocean Professional Theme Styles */
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.app-root {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(180deg, rgba(59,130,246,0.10), rgba(249,250,251,1));
+  padding: 56px 16px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: -28px auto 24px;
+  padding: 0 16px 48px;
+  flex: 1 1 auto;
+}
+
+.card.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.list-header {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--color-primary);
   font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Input Row */
+.todo-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.input {
+  height: 44px;
+  border-radius: 12px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.input::placeholder { color: #9aa3ae; }
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+/* Buttons */
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 12px;
+  height: 44px;
+  padding: 0 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btn:hover {
+  transform: translateY(-1px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn.primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+.btn.ghost {
+  background: transparent;
+}
+
+.btn.ghost.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(59,130,246,0.08);
+}
+
+.btn.danger {
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Filters row and controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* List */
+.todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.todo-item + .todo-item { margin-top: 10px; }
+
+.todo-item:hover {
+  box-shadow: var(--shadow);
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-success);
+  cursor: pointer;
+}
+
+.todo-text {
+  user-select: none;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.todo-text.completed {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  color: var(--color-error);
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease, transform .06s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  transform: translateY(-1px);
+}
+
+.icon-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Empty state */
+.empty {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* Footer */
+.app-footer {
+  padding: 12px 16px 32px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .todo-input { grid-template-columns: 1fr; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .filters { justify-content: center; }
 }
